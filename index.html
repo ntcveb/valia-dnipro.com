@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Землепорядник Дніпро | Оформлення землі, кадастр, приватизація</title>
+
+<!-- Alegreya -->
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<meta name="description" content="Землепорядник у м. Дніпро. Оформлення земельних ділянок, присвоєння кадастрових номерів, поділ, приватизація. Консультації та супровід відповідно до законодавства України." />
+<meta name="robots" content="index, follow" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Землепорядник",
+  "description": "Оформлення земельних ділянок, присвоєння кадастрових номерів, поділ, приватизація. Консультації у м. Дніпро.",
+  "url": "https://yourdomain.example/",
+  "telephone": "+380965450948",
+  "email": "valia3003@ukr.net",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Дніпро",
+    "streetAddress": "вул. Теплична, 27",
+    "addressCountry": "UA"
+  },
+  "sameAs": [
+    "https://www.instagram.com/valiamatroy"
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg-top:#e6f3ea;
+    --bg-bottom:#d0ead6;
+    --green:#1f7a4a;
+    --green-dark:#134f33;
+    --gold:#c9a24a;
+    --card-bg:#ffffff;
+    --shadow:0 8px 20px rgba(19,79,45,0.12);
+    --radius:12px;
+    --transition:420ms cubic-bezier(.2,.9,.3,1);
+    --main-font:"Alegreya", Georgia, "Times New Roman", serif;
+    --max-width:1100px;
+  }
+
+  html,body{
+    height:100%;margin:0;background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+    color:#0f2b1a;font-family:var(--main-font);font-size:16px;line-height:1.45;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+
+  .wrap{max-width:var(--max-width);margin:28px auto;padding:18px;}
+
+  /* Header layout */
+  header{display:flex;gap:18px;align-items:flex-start;margin-bottom:18px;}
+  .left-col{display:flex;flex-direction:column;gap:12px;min-width:260px;}
+  .contact-box{
+    display:flex;flex-direction:column;gap:10px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfff9);
+    border:1px solid rgba(19,79,45,0.06);box-shadow:0 8px 20px rgba(19,79,45,0.06);
+  }
+  .contact-row{display:flex;align-items:center;gap:12px;}
+  .icon-box{width:44px;height:44px;border-radius:10px;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.08);}
+  .contact-link{display:flex;flex-direction:column;text-decoration:none;color:var(--green-dark);font-weight:700;}
+  .contact-small{font-size:13px;color:#456;font-weight:500;}
+
+  .link-btn{
+    display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg, rgba(31,122,74,0.06), rgba(31,122,74,0.03));
+    border:1px solid rgba(19,79,45,0.06);text-decoration:none;color:var(--green-dark);font-weight:700;
+  }
+
+  .hero{margin-left:auto;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+  .hero h1{margin:0;color:var(--green-dark);font-size:24px;font-weight:800;}
+  .hero p{margin:0;color:#234;font-size:14px;font-weight:500;}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:6px;}
+  .card{background:transparent;border-radius:var(--radius);padding:12px;display:flex;flex-direction:column;align-items:center;
+    transform:translateY(18px);opacity:0;transition:opacity var(--transition),transform var(--transition);}
+  .card.revealed{transform:none;opacity:1;}
+  .photo-wrap{width:100%;background:var(--card-bg);border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(19,79,45,0.06);transition:transform 260ms ease, box-shadow 260ms ease;}
+  .photo{width:100%;height:200px;object-fit:cover;border-radius:10px;background:#fff;border:1.5px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,0.04);}
+
+  .caption{margin-top:12px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));
+    border-radius:10px;padding:12px 14px;width:100%;text-align:left;cursor:pointer;border:1px solid rgba(20,20,20,0.03);transition:box-shadow 180ms ease,transform 180ms ease;}
+  .caption:focus{outline:3px solid rgba(31,122,74,0.12);outline-offset:3px;}
+  .caption h3{margin:0;font-size:17px;color:#0f2b1a;font-weight:700;}
+  .caption p{margin:8px 0 0;color:#234;font-size:14px;line-height:1.45;}
+
+  .detail{max-height:0;overflow:hidden;transition:max-height 420ms cubic-bezier(.2,.9,.3,1),opacity 320ms ease;opacity:0;padding:0 12px;margin-top:10px;color:#234;background:linear-gradient(180deg,#fff,#fff);border-radius:10px;border:1px solid rgba(0,0,0,0.03);}
+  .detail.open{opacity:1;padding:12px;margin-top:12px;max-height:800px;}
+
+  /* Form */
+  .lead-section{margin-top:28px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:var(--shadow);border:1px solid rgba(20,20,20,0.03);}
+  .lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .lead-grid .full{grid-column:1/-1;}
+  label{display:block;font-size:13px;color:#234;margin-bottom:6px;font-weight:700;}
+  input[type="text"], input[type="email"], textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(20,20,20,0.06);font-size:14px;background:#fff;}
+  textarea{min-height:120px;resize:vertical;}
+  .submit-row{display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap;}
+  .btn-primary{background:var(--green);color:#fff;padding:12px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer;}
+  .btn-secondary{background:transparent;border:1px solid rgba(20,20,20,0.06);padding:10px 12px;border-radius:10px;cursor:pointer;}
+  .form-note{font-size:13px;color:#456;margin-top:8px;}
+  .success-msg{display:none;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(31,122,74,0.06), rgba(201,162,74,0.02));color:var(--green-dark);font-weight:700;margin-top:12px;}
+
+  /* Desktop refinements */
+  @media (min-width:1100px){
+    .grid{grid-template-columns:repeat(3,1fr);}
+    .photo{height:220px;}
+    .hero h1{font-size:26px;}
+  }
+
+  /* Tablet */
+  @media (max-width:1024px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .left-col{min-width:220px;}
+  }
+
+  /* Mobile */
+  @media (max-width:720px){
+    .wrap{padding:12px;margin:12px auto;}
+    header{flex-direction:column;align-items:stretch;gap:12px;}
+    .hero{text-align:left;margin-left:0;align-items:flex-start;}
+    .left-col{width:100%}
+    .grid{grid-template-columns:1fr;gap:14px;}
+    .photo{height:180px;}
+    .btn-primary{width:100%;padding:12px 14px;}
+    .lead-grid{grid-template-columns:1fr;}
+    .contact-box{padding:10px;}
+    .icon-box{width:40px;height:40px;}
+    .caption{padding:10px;}
+  }
+
+  /* Accessibility: larger tap targets */
+  .link-btn, .contact-link, .addr-btn, .btn-primary, .btn-secondary{touch-action:manipulation;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="left-col">
+        <div class="contact-box" aria-label="Контакти">
+          <a class="link-btn" href="https://www.instagram.com/valiamatroy?igsh=Zmg4MThyeDNzZTF2" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <span class="icon-box" aria-hidden="true" style="width:40px;height:40px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="5" fill="#ffffff" opacity="0.06"/>
+                <path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6z" stroke="#fff" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="17.5" cy="6.5" r="0.9" fill="#fff" />
+              </svg>
+            </span>
+            <span style="font-weight:700;color:var(--gold);">Instagram</span>
+          </a>
+
+          <div class="contact-row" style="margin-top:6px;">
+            <span class="icon-box" aria-hidden="true" style="width:40px;height:40px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6.5v11A2.5 2.5 0 0 0 5.5 20h13a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 18.5 4h-13A2.5 2.5 0 0 0 3 6.5z" fill="#fff" opacity="0.04"/>
+                <path d="M4 7.2l8 5 8-5" stroke="#fff" stroke-opacity="0.9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <a class="contact-link" href="mailto:valia3003@ukr.net">valia3003@ukr.net
+              <span class="contact-small">Напишіть листа</span>
+            </a>
+          </div>
+
+          <div class="contact-row">
+            <span class="icon-box" aria-hidden="true" style="width:40px;height:40px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12.9.38 1.77.75 2.58a2 2 0 0 1-.45 2.11L9.91 9.91a16 16 0 0 0 6 6l1.5-1.5a2 2 0 0 1 2.11-.45c.81.37 1.68.63 2.58.75A2 2 0 0 1 22 16.92z" fill="#fff" opacity="0.06"/>
+              </svg>
+            </span>
+            <a class="contact-link" href="tel:+380965450948">+380 96 545 09 48
+              <span class="contact-small">Зателефонуйте зараз</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero" role="region" aria-label="Про послугу">
+        <h1>Землепорядник</h1>
+        <p>Юридичне оформлення земельних ділянок • Кадастр • Приватизація</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid" id="sections">
+        <!-- Section 1 -->
+        <article class="card delay-1" data-index="1">
+          <div class="photo-wrap">
+            <img src="1.jpg" alt="Документи" class="photo" />
+          </div>
+          <div class="caption" role="button" tabindex="0" aria-expanded="false" data-has-detail="true">
+            <h3>Правильно оформлені документи гарантують ваше право власності</h3>
+            <p>Правильне оформлення — це перший крок до спокою та безпеки вашої власності.</p>
+          </div>
+          <div class="detail" aria-hidden="true">
+            <p><strong>Що саме я роблю:</strong> готую повний пакет документів для реєстрації права власності, перевіряю історію ділянки, готую технічну документацію та супровід у державних органах. Працюю з нотаріусами та реєстраторами, щоб уникнути помилок при подачі документів.</p>
+            <p><strong>Чому це важливо:</strong> неправильно оформлені документи можуть призвести до відмови в реєстрації, спорів із сусідами або втрати права власності. Я мінімізую ризики та забезпечую юридичну чистоту угоди.</p>
+          </div>
+        </article>
+
+        <!-- Section 2 -->
+        <article class="card delay-2" data-index="2">
+          <div class="photo-wrap">
+            <img src="2.jpg" alt="Мета" class="photo" />
+          </div>
+          <div class="caption" role="button" tabindex="0" aria-expanded="false" data-has-detail="true">
+            <h3>Моя мета — зробити вашу земельну ділянку юридично захищеною</h3>
+            <p>Я працюю, щоб ви могли розпоряджатися землею без ризиків і сумнівів.</p>
+          </div>
+          <div class="detail" aria-hidden="true">
+            <p><strong>Послуги для захисту прав:</strong> аналіз правовстановлюючих документів, перевірка на арешти та обтяження, підготовка договорів купівлі-продажу, дарування або міни, супровід при внесенні змін до кадастру.</p>
+            <p><strong>Результат:</strong> ви отримуєте повний юридичний супровід — від первинної перевірки до внесення запису в Державний земельний кадастр і реєстрації права власності.</p>
+          </div>
+        </article>
+
+        <!-- Section 3 -->
+        <article class="card delay-3" data-index="3">
+          <div class="photo-wrap">
+            <img src="3.jpg" alt="Про мене" class="photo" />
+          </div>
+          <div class="caption" role="button" tabindex="0" aria-expanded="false" data-has-detail="true">
+            <h3>Я — землевпорядник в Україні</h3>
+            <p>Спеціалізуюсь на приватизації, кадастрі, поділі та об’єднанні ділянок.</p>
+          </div>
+          <div class="detail" aria-hidden="true">
+            <p><strong>Досвід і підхід:</strong> працюю з різними категоріями земель — приватні ділянки, с/г землі, забудовані території. Підходжу індивідуально: оцінюю документи, пропоную оптимальний план дій та координую всі етапи оформлення.</p>
+            <p><strong>Що отримаєте:</strong> чіткий план робіт, терміни виконання, прозорий кошторис та супровід на всіх етапах — від геодезичних вимірів до внесення даних у кадастр і реєстрації права власності.</p>
+          </div>
+        </article>
+
+        <!-- Section 4 -->
+        <article class="card delay-4" data-index="4">
+          <div class="photo-wrap">
+            <img src="4.jpg" alt="Кадастровий номер" class="photo" />
+          </div>
+          <div class="caption" role="button" tabindex="0" aria-expanded="false" data-has-detail="true">
+            <h3>Кадастровий номер — унікальний ідентифікатор ділянки</h3>
+            <p>Кадастровий номер необхідний для реєстрації права власності та юридичних операцій з землею.</p>
+          </div>
+          <div class="detail" aria-hidden="true">
+            <p>Я надаю повний супровід з присвоєння кадастрового номера: підготовку технічної документації, погодження меж ділянки та внесення даних до Державного земельного кадастру. Гарантую правильність оформлення відповідно до чинного законодавства України.</p>
+          </div>
+        </article>
+
+        <!-- Section 5 -->
+        <article class="card delay-5" data-index="5">
+          <div class="photo-wrap">
+            <img src="5.jpg" alt="Поділ земель" class="photo" />
+          </div>
+          <div class="caption" role="button" tabindex="0" aria-expanded="false" data-has-detail="true">
+            <h3>Поділ земельної ділянки</h3>
+            <p>Поділ — формування двох або більше нових ділянок з однієї.</p>
+          </div>
+          <div class="detail" aria-hidden="true">
+            <p>Я забезпечую повний супровід поділу землі: розробку технічної документації, визначення та закріплення меж, погодження з відповідними органами та внесення даних до Державного земельного кадастру. Усі роботи виконуються відповідно до вимог законодавства України з урахуванням ваших потреб.</p>
+          </div>
+        </article>
+
+        <!-- Section 6 -->
+        <article class="card delay-6" data-index="6">
+          <div class="photo-wrap">
+            <img src="6.jpg" alt="Приватизація" class="photo" />
+          </div>
+          <div class="caption" role="button" tabindex="0" aria-expanded="false" data-has-detail="true">
+            <h3>Приватизація земельної ділянки</h3>
+            <p>Оформлення права приватної власності відповідно до законодавства України.</p>
+          </div>
+          <div class="detail" aria-hidden="true">
+            <p>Я надаю повний супровід приватизації: підготовку необхідної документації, погодження меж земельної ділянки, присвоєння кадастрового номера та реєстрацію права власності. Моя мета — зробити процес зрозумілим, законним і максимально простим для вас.</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Form -->
+      <section class="lead-section" aria-labelledby="lead-title">
+        <h2 id="lead-title" style="margin:0 0 12px;color:var(--green-dark);font-size:18px;">Заявка на консультацію</h2>
+        <p style="margin:0 0 12px;color:#456;">Залиште заявку — я зв'яжусь з вами для безкоштовної первинної консультації.</p>
+
+        <form id="leadForm" onsubmit="return handleSubmit(event);" novalidate>
+          <div class="lead-grid">
+            <div>
+              <label for="name">Ім'я</label>
+              <input id="name" name="name" type="text" required placeholder="Ваше ім'я" />
+            </div>
+            <div>
+              <label for="phone">Телефон</label>
+              <input id="phone" name="phone" type="text" required placeholder="+380..." />
+            </div>
+            <div class="full">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="example@domain.com" />
+            </div>
+            <div class="full">
+              <label for="message">Коротко про запит</label>
+              <textarea id="message" name="message" placeholder="Опишіть вашу ситуацію або питання"></textarea>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn-primary">Відправити заявку</button>
+            <button type="button" class="btn-secondary" onclick="clearForm()">Очистити</button>
+            <div class="form-note">Або зателефонуйте: <a href="tel:+380965450948">+380 96 545 09 48</a></div>
+          </div>
+
+          <div id="success" class="success-msg" role="status" aria-live="polite">Дякую! Ваша заявка готова до відправки. Відкривається поштовий клієнт...</div>
+        </form>
+
+        <p style="margin-top:12px;color:#666;font-size:13px;">Примітка: якщо у вас немає поштового клієнта, можна підключити сервіс обробки форм (Formspree, Getform тощо) — я допоможу налаштувати.</p>
+      </section>
+    </main>
+
+    <footer style="margin-top:22px;text-align:center;color:#234;font-size:14px;">
+      <small>Зв'язок: <a href="mailto:valia3003@ukr.net">valia3003@ukr.net</a> • <a href="tel:+380965450948">+380 96 545 09 48</a></small>
+    </footer>
+  </div>
+
+<script>
+  // Reveal on scroll
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealed');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  cards.forEach(c=>io.observe(c));
+
+  // Toggle details for captions
+  document.querySelectorAll('.caption').forEach(caption=>{
+    caption.addEventListener('click', toggleDetail);
+    caption.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDetail.call(caption); }});
+  });
+
+  function toggleDetail(){
+    const caption = this;
+    const parent = caption.closest('.card');
+    const detail = parent.querySelector('.detail');
+    if(!detail) return;
+    const isOpen = detail.classList.contains('open');
+    if(isOpen){
+      detail.style.maxHeight = detail.scrollHeight + 'px';
+      requestAnimationFrame(()=>{ detail.style.maxHeight = '0px'; detail.classList.remove('open'); detail.setAttribute('aria-hidden','true'); caption.setAttribute('aria-expanded','false'); });
+    } else {
+      detail.classList.add('open');
+      detail.setAttribute('aria-hidden','false');
+      caption.setAttribute('aria-expanded','true');
+      detail.style.maxHeight = '0px';
+      requestAnimationFrame(()=>{ detail.style.maxHeight = detail.scrollHeight + 'px'; });
+      detail.addEventListener('transitionend', function te(){
+        if(detail.classList.contains('open')) detail.style.maxHeight = 'none';
+        detail.removeEventListener('transitionend', te);
+      });
+    }
+  }
+
+  // Form handling (mailto fallback)
+  const recipientEmail = "valia3003@ukr.net";
+  const formAction = null; // set endpoint if using form service
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const form = document.getElementById('leadForm');
+    const name = encodeURIComponent(form.name.value.trim());
+    const phone = encodeURIComponent(form.phone.value.trim());
+    const email = encodeURIComponent(form.email.value.trim());
+    const message = encodeURIComponent(form.message.value.trim());
+
+    if(!name || !phone){
+      alert('Будь ласка, вкажіть ім\'я та телефон.');
+      return false;
+    }
+
+    if(formAction){
+      fetch(formAction, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: decodeURIComponent(name), phone: decodeURIComponent(phone), email: decodeURIComponent(email), message: decodeURIComponent(message) })
+      }).then(res=>{
+        if(res.ok){
+          showSuccess('Дякую! Ваша заявка надіслана.');
+          form.reset();
+        } else {
+          showSuccess('Виникла помилка при відправці. Спробуйте ще раз.');
+        }
+      }).catch(()=> showSuccess('Виникла помилка при відправці. Спробуйте ще раз.'));
+      return false;
+    }
+
+    const subject = encodeURIComponent('Заявка на консультацію від сайту — Землепорядник');
+    const bodyLines = [
+      `Ім'я: ${decodeURIComponent(name)}`,
+      `Телефон: ${decodeURIComponent(phone)}`,
+      `Email: ${decodeURIComponent(email)}`,
+      `Повідомлення: ${decodeURIComponent(message)}`,
+      '',
+      'Надіслано з сайту: Землепорядник (Дніпро)'
+    ];
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    const mailto = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+
+    showSuccess('Дякую! Ваша заявка готова до відправки. Відкривається поштовий клієнт...');
+    setTimeout(()=> { window.location.href = mailto; }, 700);
+    return false;
+  }
+
+  function showSuccess(text){
+    const el = document.getElementById('success');
+    el.textContent = text;
+    el.style.display = 'block';
+    setTimeout(()=> el.style.display = 'none', 8000);
+  }
+
+  function clearForm(){ document.getElementById('leadForm').reset(); }
+</script>
+</body>
+</html>
+

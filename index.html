@@ -83,7 +83,19 @@
   .card.revealed{transform:none;opacity:1;}
   .photo-wrap{width:100%;background:var(--card-bg);border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:center;
     box-shadow:0 8px 20px rgba(19,79,45,0.06);transition:transform 260ms ease, box-shadow 260ms ease;}
-  .photo{width:100%;height:200px;object-fit:cover;border-radius:10px;background:#fff;border:1.5px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,0.04);}
+
+  /* Использовать фото по стандарту: не фиксировать высоту, сохранять естественные пропорции */
+  .photo{
+    display:block;
+    max-width:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:10px;
+    background:#fff;
+    border:1.5px solid #fff;
+    box-shadow:0 6px 18px rgba(0,0,0,0.04);
+  }
 
   .caption{margin-top:12px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.96));
     border-radius:10px;padding:12px 14px;width:100%;text-align:left;cursor:pointer;border:1px solid rgba(20,20,20,0.03);transition:box-shadow 180ms ease,transform 180ms ease;}
@@ -110,7 +122,6 @@
   /* Desktop refinements */
   @media (min-width:1100px){
     .grid{grid-template-columns:repeat(3,1fr);}
-    .photo{height:220px;}
     .hero h1{font-size:26px;}
   }
 
@@ -127,7 +138,6 @@
     .hero{text-align:left;margin-left:0;align-items:flex-start;}
     .left-col{width:100%}
     .grid{grid-template-columns:1fr;gap:14px;}
-    .photo{height:180px;}
     .btn-primary{width:100%;padding:12px 14px;}
     .lead-grid{grid-template-columns:1fr;}
     .contact-box{padding:10px;}
@@ -422,4 +432,3 @@
 </script>
 </body>
 </html>
-
